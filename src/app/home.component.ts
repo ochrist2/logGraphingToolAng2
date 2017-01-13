@@ -58,27 +58,25 @@ export class HomeComponent  {
       this.base = Math.E;
     }
     this.a = parseFloat(this.a);
-    this.behold = this.b;
-    this.b = 1/parseFloat(this.b);
+    this.b = parseFloat(this.b);
     this.c = parseFloat(this.c);
     this.d = parseFloat(this.d);
     this.exp = parseFloat(this.exp);
     this.base = parseFloat(this.base);
     var x = 1;
     var y = 0;
-    x = x*this.b + this.c;
+    x = x/this.b + this.c;
     y = y + this.d;
     this.transformedPointString ="Your transformed point is at (" + x + "," + y + ").";
     y = -this.d;
-    y = y/(this.exp*this.a);
+    y = y/(this.a);
     y = Math.pow(this.base, y);
-    y = y*this.b;
+    y = y/this.b;
+    y = Math.pow(y, (1/this.exp));
     y = y+this.c;
-    y = Math.pow(y, (1/this.exp))
     this.finishedPointString = "Your  x intercept is " + y + ". Your equation of the asymptote is x = " + this.c + ".";
     if (this.exp%2 == 0){
-    this.extraString = "Your other x intercept is x = " + (-y);
-    this.b = this.behold;
+    this.extraString = "Your other x intercept is x = " + (this.c-(Math.abs(y-this.c)));
     }
     else{
       this.extraString = "";
